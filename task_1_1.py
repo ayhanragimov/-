@@ -1,24 +1,27 @@
 import sys
+import math
+import random
 
-print("Версия Python:", sys.version.split()[0])
-print("Интерпретатор:", sys.executable)
+# 2. Версия, путь к интерпретатору и количество путей sys.path
+print(f"Версия Python: {sys.version.split()[0]}")
+print(f"Интерпретатор: {sys.executable}")
+print(f"Количество путей поиска: {len(sys.path)}")
 
-print("Количество путей поиска:", len(sys.path))
+# 3. Первые 4 пути поиска
 for p in sys.path[:4]:
-    print( "   ", p)
+    print(f"    {p}")
 
-    import math, random
+# 4. Вывод math.pi и случайного числа
+print(f"math.pi = {math.pi}")
+print(f"random.random() = {random.random()}")
 
-    print("math.pi =", math.pi)
-    print("random.random() =",random.random())
+# 5. Модули sys.modules
+print(f"Всего загружено модулей: {len(sys.modules)}")
+print(f"Пример: {sorted(sys.modules)[:5]}")
 
-    mods = sorted(sys.modules)
-    print("Всего загружено моделей:", len(mods))
-    print("Пример",mods[:5])
-# TODO 1: выведите количество публичных имен в модуле math
-public = [n for n in dir(math) if not n.startswith]
-print("Публичных имен в math:", len(public))
-print("Первые 8:", public[:8])
+# 6. Публичные имена в math
+public_math = [name for name in dir(math) if not name.startswith('_')]
+print(f"Публичных имён в math: {len(public_math)}")
+print(f"Первые 8: {public_math[:8]}")
 
-# TODO 2: выведите _name_и_file_этого скрипта
-print("Мой _name_ =",__name__)
+print(f"Мой __name__ = {__name__}")
